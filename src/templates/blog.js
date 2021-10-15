@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 import Layout from '../components/layout';
 import Head from '../components/head';
@@ -17,8 +17,13 @@ export const query = graphql`
             title
             publishedDate(formatString: "MMMM Do, YYYY")
             body {
+                raw
                 references {
-                    gatsbyImageData
+                    fixed(width: 750) {
+                        width
+                        height
+                        src
+                    }
                 }
             }
         }
@@ -28,8 +33,8 @@ const Blog = (props) => {
     const options = {
         renderNode: {
             "embedded-asset-block": (node) => {
-                const alt = node.data.target.title
-                const url = node.data.fallback.src
+                const alt = "Grass"
+                const url = props.data.contentfulBlog.body.references[0].fixed.src
                 return <img alt={alt} src={url} />
             }
         }
@@ -40,7 +45,7 @@ const Blog = (props) => {
             <Head title={props.data.contentfulBlog.title}/>
            <h1>{props.data.contentfulBlog.title}</h1>
            <p>{props.data.contentfulBlog.publishedDate}</p>
-           {documentToReactComponents(props.data.contentfulBlog.body.references.gatsbyImageData, options)}
+           {renderRichText(props.data.contentfulBlog.body, options)}
         </Layout>
     )
 }
