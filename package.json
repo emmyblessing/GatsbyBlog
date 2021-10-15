@@ -1,0 +1,37 @@
+{
+  "name": "my-gatsby-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "My Gatsby Site",
+  "author": "emmyblessing",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "env-cmd -f .env gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.4.0",
+    "gatsby": "^3.11.1",
+    "gatsby-plugin-image": "^1.14.1",
+    "gatsby-plugin-react-helmet": "^4.14.0",
+    "gatsby-plugin-sass": "^4.13.0",
+    "gatsby-plugin-sharp": "^3.14.1",
+    "gatsby-remark-images": "^5.11.0",
+    "gatsby-remark-relative-images": "^2.0.2",
+    "gatsby-source-contentful": "^5.14.0",
+    "gatsby-source-filesystem": "^3.12.0",
+    "gatsby-transformer-remark": "^4.11.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.39.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}
